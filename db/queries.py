@@ -24,5 +24,17 @@ info_product TEXT
 )'''
 
 INSERT_PRODUCTS_DETAIL='''
-INSERT INTO products_detail (product_id, category, info_product)
+INSERT INTO products_detail (productid, category, info_product)
 VALUES (?,?,?)'''
+
+CREATE_TABLE_COLLECTION_PRODUCTS = '''
+CREATE TABLE IF NOT EXISTS collection_products (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+productid INTEGER,
+category VARCHAR(255),
+collection TEXT
+)'''
+
+INSERT_COLLECTION_PRODUCTS = '''
+INSERT INTO collection_products (product_id, category, collection)
+VALUES (?, ?, ?)'''
