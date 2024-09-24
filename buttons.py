@@ -10,3 +10,4 @@ cancel_button = ReplyKeyboardMarkup(resize_keyboard=True).add(KeyboardButton('О
 
 submit_button = ReplyKeyboardMarkup(resize_keyboard=True,
                                     row_width=2).add(KeyboardButton('Да'), KeyboardButton('Нет'))
+

@@ -3,7 +3,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from config import bot, dp, admin
 from handlers import (start,
                       echo,
-                      commands, quiz, game, fsm_store)
+                      commands, quiz, game, fsm_store, webapp, group)
 from db import db_main
 
 async def on_startup(dp):
@@ -16,7 +16,9 @@ commands.register_commands(dp=dp)
 quiz.register_quiz(dp=dp)
 game.register_game(dp=dp)
 fsm_store.register_store(dp=dp)
-echo.register_echo(dp=dp)
+# echo.register_echo(dp=dp)
+webapp.register_handlers_webapp(dp)
+group.register_group(dp=dp)
 
 
 
