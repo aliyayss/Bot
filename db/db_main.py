@@ -1,5 +1,5 @@
 import sqlite3
-from db import  queries
+from db import queries
 
 db = sqlite3.connect('db/store.sqlite3')
 cursor = db.cursor()
@@ -16,19 +16,22 @@ async def sql_create():
 
 
 async def sql_insert_products(name_product, size, price, product_id, photo):
-    cursor.execute(queries.INSERT_PRODUCTS_QUERY, (
-        name_product,
-        size,
-        price,
-        product_id,
-        photo
-    ))
-    db.commit()
+    with sqlite3.connect('db/store.sqlite3') as conn:
+        cursor.execute(queries.INSERT_PRODUCTS_QUERY, (
+            name_product,
+            size,
+            price,
+            product_id,
+            photo
+        ))
+        db.commit()
 
 async def insert_product_detail(product_id, category, info_product):
-    cursor.execute(queries.INSERT_PRODUCTS_DETAIL, (product_id, category, info_product))
-    db.commit()
+    with sqlite3.connect('db/store.sqlite3') as conn:
+        cursor.execute(queries.INSERT_PRODUCTS_DETAIL, (product_id, category, info_product))
+        db.commit()
 
-async def insert_collection_products(productid, category, collection):
-    cursor.execute(queries.CREATE_TABLE_COLLECTION_PRODUCTS, (productid, category, collection))
-    db.commit()
+async def insert_collection_products(product_id, category, collection):
+    with sqlite3.connect('db/store.sqlite3') as conn:
+        cursor.execute(queries.CREATE_TABLE_COLLECTION_PRODUCTS, (product_id, category, collection))
+        db.commit()
